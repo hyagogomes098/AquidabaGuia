@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia do Hóspede - Aquidabã Praia Hotel</title>
+    
+    <style>
+        :root {
+            --cor-principal: #1e3c72;
+            --cor-secundaria: #2a5298;
+            --cor-fundo: #f4f6f8;
+            --cor-cartao: #ffffff;
+            --cor-texto-escuro: #222222;
+            --cor-texto-suave: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-escuro);
+            line-height: 1.5;
+            padding-bottom: 40px;
+        }
+
+        /* BANNER DO CABEÇALHO */
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: white;
+            text-align: center;
+            padding: 30px 20px 25px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* LOGO SOLTA NO TOPO */
+        .logo-hotel {
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .logo-hotel img {
+            max-width: 240px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .conteudo {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* BOTÕES DE FILTRO */
+        .filtros {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            scrollbar-width: none;
+        }
+
+        .filtros::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filtro-btn {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            color: var(--cor-texto-suave);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .filtro-btn.ativo {
+            background-color: var(--cor-principal);
+            color: white;
+            border-color: var(--cor-principal);
+        }
+
+        /* CARTÃO DE CADA ATRAÇÃO */
+        .cartao {
+            background: var(--cor-cartao);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cartao.escondido {
+            display: none !important;
+        }
+
+        /* ESPAÇO DA FOTO */
+        .cartao-imagem {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background-color: #cbd5e1;
+        }
+
+        .cartao-corpo {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cartao-cabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cartao-titulo {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .etiqueta {
+            font-size: 0.75rem;
+            background-color: #eef2ff;
+            color: var(--cor-secundaria);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .cartao-descricao {
+            font-size: 0.9rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .cartao-acoes {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* BOTÕES DE AÇÃO */
+        .botao {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .botao-mapa {
+            background-color: #f0f4f8;
+            color: var(--cor-principal);
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO SÓ COM A LOGO -->
+    <header>
+        <div class="logo-hotel">
+            <img src="aquidaba.jpg" alt="Aquidabã Praia Hotel">
+        </div>
+        <h1>Guia do Hóspede 🌴</h1>
+        <p>Seja bem-vindo a Fortaleza! Preparamos este guia exclusivo com o melhor da cidade e do nosso hotel.</p>
+    </header>
+
+    <div class="conteudo">
+
+        <!-- MENU DE FILTROS -->
+        <div class="filtros">
+            <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
+            <button class="filtro-btn" onclick="filtrar('praias', this)">Praias</button>
+            <button class="filtro-btn" onclick="filtrar('turismo', this)">Pontos Turísticos</button>
+            <button class="filtro-btn" onclick="filtrar('cultura-lazer', this)">Cultura & Lazer</button>
+            <button class="filtro-btn" onclick="filtrar('gastronomia', this)">Gastronomia</button>
+        </div>
+
+        <!-- CATEGORIA: PRAIAS -->
+        <div class="cartao" data-categoria="praias">
+            <img class="cartao-imagem" src="estatua de iracema.jpg" alt="Estátua de Iracema Guardiã">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Estátua de Iracema Guardiã</span>
+                    <span class="etiqueta">Ponto Turístico</span>
+                </div>
+                <p class="cartao-descricao">Localizado a poucos passos do hotel. A famosa estátua em homenagem à personagem de José de Alencar é um ícone da cidade.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Est%C3%A1tua+de+Iracema+Guardi%C3%A3/@-3.7225142,-38.5147817,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cartao" data-categoria="praias">
+            <img class="cartao-imagem" src="ponte.jpg" alt="Ponte dos Ingleses">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Ponte dos Ingleses (Ponte Metálica)</span>
+                    <span class="etiqueta">Passeio</span>
+                </div>
+                <p class="cartao-descricao">Um dos melhores locais da cidade para apreciar o pôr do sol e, com sorte, observar golfinhos no mar.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Ponte+dos+Ingleses/@-3.719665,-38.517379,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIA: PONTOS TURÍSTICOS -->
+        <div class="cartao" data-categoria="turismo">
+            <img class="cartao-imagem" src="catedral.jpg" alt="Catedral Metropolitana de Fortaleza">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Catedral Metropolitana de Fortaleza</span>
+                    <span class="etiqueta">Religioso</span>
+                </div>
+                <p class="cartao-descricao">Um imponente templo em estilo neogótico, localizado no coração do centro histórico da cidade.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Catedral+Metropolitana+de+Fortaleza/@-3.7251786,-38.5283995,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cartao" data-categoria="turismo">
+            <img class="cartao-imagem" src="feirinha beira mar.jpg" alt="Feirinha da Beira Mar">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Feirinha da Beira Mar</span>
+                    <span class="etiqueta">Compras & Lazer</span>
+                </div>
+                <p class="cartao-descricao">Feira de artesanato ao ar livre com centenas de bancas a vender rendas, castanhas, doces típicos e lembranças de Fortaleza.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Feirinha+da+Beira+Mar+Fortaleza" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIA: CULTURA & LAZER -->
+        <div class="cartao" data-categoria="cultura-lazer">
+            <img class="cartao-imagem" src="dragaodomar.jpg" alt="Centro Dragão do Mar de Arte e Cultura">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Centro Dragão do Mar</span>
+                    <span class="etiqueta">Cultura & Arte</span>
+                </div>
+                <p class="cartao-descricao">Complexo cultural com museus, planetário, cinemas e espaço para caminhadas. Ótimo para o fim de tarde e noite.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Centro+Drag%C3%A3o+do+Mar+de+Arte+e+Cultura/@-3.7214739,-38.5204646,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIA: GASTRONOMIA -->
+        <div class="cartao" data-categoria="gastronomia">
+            <img class="cartao-imagem" src="mercado-central-de-fortaleza.jpg" alt="Mercado Central de Fortaleza">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Mercado Central</span>
+                    <span class="etiqueta">Gastronomia & Compras</span>
+                </div>
+                <p class="cartao-descricao">Um dos maiores mercados do Ceará, perfeito para encontrar artesanato local e experimentar a culinária regional.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Mercado+Central+de+Fortaleza/@-3.7248386,-38.5273935,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cartao" data-categoria="gastronomia">
+            <img class="cartao-imagem" src="Mercado-dos-Peixes-de-Fortaleza.jpg" alt="Mercado dos Peixes do Mucuripe">
+            <div class="cartao-corpo">
+                <div class="cartao-cabecalho">
+                    <span class="cartao-titulo">Mercado dos Peixes</span>
+                    <span class="etiqueta">Gastronomia Típica</span>
+                </div>
+                <p class="cartao-descricao">Escolha frutos do mar frescos nas bancas e peça para preparar na hora no próprio local à beira-mar.</p>
+                <div class="cartao-acoes">
+                    <a href="https://www.google.com/maps/place/Mercado+dos+Peixes+do+Mucuripe/@-3.7258386,-38.4873935,17z" target="_blank" class="botao botao-mapa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Como Chegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Tenha uma excelente estadia no Aquidabã Praia Hotel!</p>
+    </footer>
+
+    <!-- SCRIPT DE FILTRO -->
+    <script>
+        function filtrar(categoria, elemento) {
+            var botoes = document.querySelectorAll('.filtro-btn');
+            for (var i = 0; i < botoes.length; i++) {
+                botoes[i].classList.remove('ativo');
+            }
+            elemento.classList.add('ativo');
+
+            var cartoes = document.querySelectorAll('.cartao');
+            for (var j = 0; j < cartoes.length; j++) {
+                var catCartao = cartoes[j].getAttribute('data-categoria');
+                if (categoria === 'todos' || catCartao === categoria) {
+                    cartoes[j].classList.remove('escondido');
+                } else {
+                    cartoes[j].classList.add('escondido');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
