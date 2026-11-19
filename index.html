@@ -99,21 +99,11 @@
             width: 100%;
             min-height: calc(100vh - 340px);
             background-color: var(--fundo-pagina);
-            padding-bottom: 60px;
-            overflow: hidden;
-        }
-
-        .area-inferior::before {
-            content: "";
-            position: absolute;
-            inset: 0;
             background-image: url('e0d196e4-3e96-4259-9e60-f45856702e86.png');
-            background-size: cover;
+            background-size: 100% auto;
             background-position: center top;
-            background-repeat: no-repeat;
-            opacity: 0.95;
-            pointer-events: none;
-            z-index: 0;
+            background-repeat: repeat-y;
+            padding-bottom: 60px;
         }
 
         /* CONTEÚDO PRINCIPAL */
@@ -296,8 +286,8 @@
 
         /* RESPONSIVIDADE PARA CELULAR */
         @media (max-width: 768px) {
-            .area-inferior::before {
-                background-size: 240% auto;
+            .area-inferior {
+                background-size: 220% auto;
                 background-position: center top;
                 background-repeat: repeat-y;
             }
