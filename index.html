@@ -99,12 +99,21 @@
             width: 100%;
             min-height: calc(100vh - 340px);
             background-color: var(--fundo-pagina);
+            padding-bottom: 60px;
+            overflow: hidden;
+        }
+
+        .area-inferior::before {
+            content: "";
+            position: absolute;
+            inset: 0;
             background-image: url('e0d196e4-3e96-4259-9e60-f45856702e86.png');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
-            background-attachment: fixed;
-            padding-bottom: 60px;
+            opacity: 0.95;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* CONTEÚDO PRINCIPAL */
@@ -113,7 +122,7 @@
             z-index: 1;
             max-width: 960px;
             margin: 0 auto;
-            padding: 32px 20px 16px;
+            padding: 28px 18px 16px;
         }
 
         /* BOTÕES DE FILTRO */
@@ -121,18 +130,18 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 32px;
+            gap: 10px;
+            margin-bottom: 28px;
         }
 
         .filtro-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background-color: rgba(255, 255, 255, 0.92);
+            gap: 6px;
+            background-color: rgba(255, 255, 255, 0.94);
             border: 1.5px solid #cbd5e1;
             color: var(--cor-texto-escuro);
-            padding: 10px 22px;
+            padding: 10px 20px;
             border-radius: 999px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -287,28 +296,41 @@
 
         /* RESPONSIVIDADE PARA CELULAR */
         @media (max-width: 768px) {
-            .area-inferior {
-                background-attachment: scroll;
+            .area-inferior::before {
+                background-size: 240% auto;
+                background-position: center top;
+                background-repeat: repeat-y;
             }
 
             header {
-                min-height: 290px;
-                padding: 36px 16px;
+                min-height: 270px;
+                padding: 32px 16px;
             }
 
             .logo-original-branca {
-                max-width: 260px;
+                max-width: 240px;
             }
 
             .boas-vindas h1 {
                 font-size: 1.35rem;
             }
 
+            .boas-vindas p {
+                font-size: 0.9rem;
+            }
+
+            .conteudo {
+                padding: 22px 14px 12px;
+            }
+
             .filtros {
                 justify-content: flex-start;
                 flex-wrap: nowrap;
                 overflow-x: auto;
-                padding-bottom: 8px;
+                gap: 8px;
+                margin-bottom: 22px;
+                padding: 2px 2px 8px;
+                -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
             }
 
@@ -316,21 +338,33 @@
                 display: none;
             }
 
+            .filtro-btn {
+                padding: 8px 13px;
+                font-size: 0.8rem;
+                flex-shrink: 0;
+            }
+
             .cartao {
                 grid-template-columns: 1fr;
+                border-radius: 18px;
             }
 
             .cartao-imagem-wrapper {
-                height: 220px;
-                min-height: 220px;
+                height: 210px;
+                min-height: 210px;
             }
 
             .cartao-corpo {
-                padding: 22px 20px;
+                padding: 20px 18px;
+                gap: 12px;
             }
 
             .cartao-titulo {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
+            }
+
+            .cartao-descricao {
+                font-size: 0.88rem;
             }
         }
     </style>
